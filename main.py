@@ -37,16 +37,20 @@ def phi_solution(x):
     return 0.5*math.e**-x
 
 # We should expect this to 'hone in' on a value as it adds more pieces (hint: it doesn't idk why)
-print("Varying number of pieces...")
-trap_vary_pieces = [phi_estimate(45, L=3, pieces=pieces, est_algorithm="trap", k=1) for pieces in [0, 1, 10, 50, 100, 256]]
+print("Varying pieces...")
+trap_vary_pieces = [phi_estimate(1, L=100000000, pieces=pieces, est_algorithm="trap", k=1) for pieces in [0, 1, 10, 50, 100, 256]]
 for val in trap_vary_pieces: print (val)
 
 print("Varying k...")
-trap_vary_k = [phi_estimate(1, L=100000000, pieces=100000, est_algorithm="trap", k=k) for k in [0, 1, 2, 3, 5, 10, 100, 1000]]
+trap_vary_k = [phi_estimate(1, L=100000000, pieces=10000, est_algorithm="trap", k=k) for k in [0, 1, 2, 3, 5, 10, 100, 1000]]
 for val in trap_vary_k: print (val)
 
-print("x=1, Trap estimate:" + str(phi_estimate(1, L=100000000, pieces=1000, est_algorithm="trap", k=1)))
-print("x=1, Simp estimate:" + str(phi_estimate(1, est_algorithm="simp")))
+print("Varying L...")
+trap_vary_L = [phi_estimate(1, L=L, pieces=10000, est_algorithm="trap", k=1) for L in [10, 100, 1000, 10000, 100000, 1000000, 1000000000]]
+for val in trap_vary_L: print (val)
+
+# print("x=1, Trap estimate:" + str(phi_estimate(1, L=100000000, pieces=10000, est_algorithm="trap", k=1)))
+# print("x=1, Simp estimate:" + str(phi_estimate(1, est_algorithm="simp")))
 print("x=1 Exact Solution:" + str(phi_solution(1)))
 
 # return mcclarren.trapezoid(lambda x: phi(x, k=4), a=-3.0, b=3.0, pieces=1)
