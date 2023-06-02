@@ -2,7 +2,7 @@ import math # math.cos is rads
 import mcclarren
 import mathd
 
-print("Hi collin")
+print("Hi")
 
 def linear_equation(x, m=1, b=0):
     y = m*x + b
